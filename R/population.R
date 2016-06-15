@@ -9,13 +9,20 @@ safe.ifelse <- function(cond, yes, no) structure(ifelse(cond, yes, no), class = 
 #' @return population object
 #' 
 #' @export
-population.build = function(minimum_intro, maximum_intro, population_definition, cmbd_definition = NULL){
+population.build = function(minimum_intro, maximum_intro, population_definition, cmbd_definition = NULL, day = NULL){
+  if(!is.null(day)){
+    pop_def$col_names['dbirth'] = 'c'  # We don't have the day
+  }
   population = sisap.read_file(population_definition, vars = c('ocip', 'dbirth', 'dsit', 'sit'))
+  if(!is.null(day)){
+    population = population %>% mutate(
+      dbirth = as.Date(paste0(dbirth,day), '%Y%m%d'))
+  }
   if(!is.null(cmbd_definition)){
     cmbd.death = sisap.read_file(cmbd_def, vars = c('ocip', 'd_alta', 'c_alta')) %>% 
       subset(c_alta == 6)%>%
       dplyr::group_by(ocip) %>%
-      dplyr::summarise(ddeath = first(d_alta))
+      dplyr::summarise(ddeath = max(d_alta)) # From all possibles the maximum is considered
     population = population %>%
       dplyr::left_join(cmbd.death, by='ocip') %>%
       dplyr::mutate(
