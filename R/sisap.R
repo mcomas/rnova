@@ -6,7 +6,7 @@
 #' @return returns a data.frame in \code{\link{tbl_df}} format
 #' 
 #' @export
-sisap.read_file = function(file_def, vars, locale = readr::locale(date_format = "%Y%m%d"), ...){
+sisap.read_file = function(file_def, vars = names(file_def$col_names), locale = readr::locale(date_format = "%Y%m%d"), ...){
   vnames = names(file_def$col_names)
   vtypes = file_def$col_names
   if( length(dv <- setdiff(vars , vnames)) > 0){
@@ -139,6 +139,22 @@ sisap.column_names = function(filename, delim, type, numcol){
         col_names = c('ocip', 'date', 'atc', 'pfc', 'env', 'ndd', 'pvp', 'liq', 'reg', 'tip', 'rce'),
         integer_vars = c('env'),
         double_vars = c('pvp', 'liq')))
+    }
+    if(numcol == 14){
+      return(sisap.file_definition(
+        filename = filename, delim = delim,
+        col_names = c('ocip', 'upi', 'upa', 'col', 'atc', 'pfc', 'date', 'env', 'ndd', 'pvp', 'liq', 'reg', 'tip', 'rce'),
+        integer_vars = c('env'),
+        double_vars = c('pvp', 'liq')))
+      
+    }
+  }
+  if(type == 'medea'){
+    if(numcol == 2){
+      return(sisap.file_definition(
+        filename = filename, delim = delim,
+        col_names = c('ocip', 'medea')))
+      
     }
   }
 }

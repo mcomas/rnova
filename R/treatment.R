@@ -14,6 +14,14 @@ treatment.build = function(treatment_definition, ocip_filter = NULL, day_of_mont
     left_join(catalog %>% select(pfc, pf.units), by = 'pfc')
 }
 
+#' Create a treatment data.frame with a treatment from registry
+#' 
+#' @param df.treatment data.frame with treatment 
+#' @param months_effect months effect
+#' @param include_env consider the number of containers in the effect
+#' @return a data.frame containing the facturations
+#' 
+#' @export
 treatment.periods = function(df.treatment, months_effect = 6, include_env = TRUE){
   if(include_env){
     df.treatment = df.treatment %>%
