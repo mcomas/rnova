@@ -8,7 +8,9 @@
 #' @export
 treatment.build = function(treatment_definition, ocip_filter = NULL, day_of_month = 28){
   treatment = sisap.read_file(treatment_definition, vars = c('ocip', 'date', 'pfc', 'env'))
-  treatment = treatment %>% subset(ocip %in% ocip_filter)
+  if(!is.null(ocip_filter)){
+    treatment = treatment %>% subset(ocip %in% ocip_filter)
+  }
   treatment %>% 
     mutate(date = as.Date(sprintf("%s%02d", date, day_of_month), format = '%Y%m%d')) %>%
     left_join(catalog %>% select(pfc, pf.units), by = 'pfc')
