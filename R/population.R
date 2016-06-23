@@ -28,13 +28,13 @@ population.build = function(minimum_intro, maximum_intro, population_definition,
       dplyr::mutate(
         ddeath = safe.ifelse(sit == 'D' & is.na(ddeath), dsit, ddeath),
         dtrans = safe.ifelse(sit == 'T' & is.na(ddeath), dsit, NA)) %>%
-      dplyr::select_(c('ocip', 'dbirth', 'ddeath', 'dtrans', other))
+      dplyr::select_(.dots = c('ocip', 'dbirth', 'ddeath', 'dtrans', other))
   }else{
     population = population %>%
       dplyr::mutate(
         ddeath = safe.ifelse(sit == 'D', dsit, NA),
         dtrans = safe.ifelse(sit == 'T', dsit, NA)) %>%
-      dplyr::select_(c('ocip', 'dbirth', 'ddeath', 'dtrans', other))
+      dplyr::select_(.dots = c('ocip', 'dbirth', 'ddeath', 'dtrans', other))
   }
   population = population %>%
     mutate(
