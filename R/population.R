@@ -9,11 +9,11 @@ safe.ifelse <- function(cond, yes, no) structure(ifelse(cond, yes, no), class = 
 #' @return population object
 #' 
 #' @export
-population.build = function(minimum_intro, maximum_intro, population_definition, cmbd_definition = NULL, day = NULL){
+population.build = function(minimum_intro, maximum_intro, population_definition, cmbd_definition = NULL, day = NULL, other = c()){
   if(!is.null(day)){
     pop_def$col_names['dbirth'] = 'c'  # We don't have the day
   }
-  population = sisap.read_file(population_definition, vars = c('ocip', 'dbirth', 'dsit', 'sit'))
+  population = sisap.read_file(population_definition, vars = c('ocip', 'dbirth', 'dsit', 'sit', other))
   if(!is.null(day)){
     population = population %>% mutate(
       dbirth = as.Date(paste0(dbirth,day), '%Y%m%d'))
@@ -28,13 +28,13 @@ population.build = function(minimum_intro, maximum_intro, population_definition,
       dplyr::mutate(
         ddeath = safe.ifelse(sit == 'D' & is.na(ddeath), dsit, ddeath),
         dtrans = safe.ifelse(sit == 'T' & is.na(ddeath), dsit, NA)) %>%
-      dplyr::select(ocip, dbirth, ddeath, dtrans)
+      dplyr::select_(c('ocip', 'dbirth', 'ddeath', 'dtrans', other))
   }else{
     population = population %>%
       dplyr::mutate(
         ddeath = safe.ifelse(sit == 'D', dsit, NA),
         dtrans = safe.ifelse(sit == 'T', dsit, NA)) %>%
-      dplyr::select(ocip, dbirth, ddeath, dtrans)
+      dplyr::select_(c('ocip', 'dbirth', 'ddeath', 'dtrans', other))
   }
   population = population %>%
     mutate(
