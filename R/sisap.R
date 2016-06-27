@@ -85,7 +85,7 @@ sisap.file_definition = function(filename, delim = '@', col_names = NULL,
   structure(list(
     'type' = NULL,
     'file' = filename,
-    'delim' = "@",
+    'delim' = delim,
     'col_names' = cnames),
     class='sisap.file')
 }
