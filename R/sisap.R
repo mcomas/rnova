@@ -97,7 +97,13 @@ sisap.column_names = function(filename, delim, type, numcol){
         filename = filename, delim = delim, 
         col_names = c('ocip', 'sector', 'up', 'uba', 'dbirth', 'sex', 'nationality', 
                       'sit', 'dsit', 'fvis', 'lvis', 'code'),
-        date_vars = c('dbirth', 'dsit')))
+        date_vars = c('dbirth', 'dsit', 'fvis', 'lvis')))
+    }
+    if(numcol == 8){
+      return(sisap.file_definition(
+        filename = filename, delim = delim, 
+        col_names = c('ocip', 'sector', 'dbirth', 'sex', 'sit', 'dsit', 'fvis', 'lvis'),
+        date_vars = c('dbirth', 'dsit', 'fvis', 'lvis')))
     }
   }
   if(type == 'cmbd'){
