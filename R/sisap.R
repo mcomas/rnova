@@ -113,6 +113,16 @@ sisap.column_names = function(filename, delim, type, numcol){
         date_vars = c('d_naix', 'd_ingres', 'd_alta'),
         integer_vars = c('c_ingres', 'c_alta', 'dies_est')))
     }
+    if(numcol == 33){
+      return(sisap.file_definition(
+        filename = filename, delim = delim,
+        col_names = c(
+          'ocip', 'X', 'd_ingres', 'c_ingres', 'Pr_ingres', 'd_alta', 'c_alta', 'dp',
+          'ds1', 'ds2', 'ds3', 'ds4', 'ds5', 'ds6', 'ds7', 'ds8', 'ds9', 'ce1', 'ce2', 'ce3', 'ce4', 'ce5',
+          'pp', 'ps1', 'ps2', 'ps3', 'ps4', 'ps5', 'ps6', 'ps7', 'px1', 'px2', 'grd_ap_sensepx'),
+        date_vars = c('d_ingres', 'd_alta'),
+        integer_vars = c('c_ingres', 'c_alta')))
+    }
     if(numcol == 35){
       return(sisap.file_definition(
         filename = filename, delim = delim,
