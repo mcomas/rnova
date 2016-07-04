@@ -1,7 +1,7 @@
 Package: rnova
 Encoding: UTF-8
 Title: Working with sisap files
-Version: 0.1.5
+Version: 0.1.6
 Authors@R: c(person("Jordi", "Blanch", role = c("aut")),
              person("Marc", "Comas-Cufí", role = c("aut", "cre"),
                     email = "mcomas@idiapjgol.info"))

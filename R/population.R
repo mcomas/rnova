@@ -13,13 +13,13 @@ population.build = function(minimum_intro, maximum_intro, population_definition,
   if(!is.null(day)){
     pop_def$col_names['dbirth'] = 'c'  # We don't have the day
   }
-  population = sisap.read_file(population_definition, vars = c('ocip', 'dbirth', 'dsit', 'sit', other))
+  population = sisap.read_file(population_definition, vars = c('ocip', 'dbirth', 'dsit', 'sit', other), locale = population_definition$locale)
   if(!is.null(day)){
     population = population %>% mutate(
       dbirth = as.Date(paste0(dbirth,day), '%Y%m%d'))
   }
   if(!is.null(cmbd_definition)){
-    cmbd.death = sisap.read_file(cmbd_def, vars = c('ocip', 'd_alta', 'c_alta')) %>% 
+    cmbd.death = sisap.read_file(cmbd_def, vars = c('ocip', 'd_alta', 'c_alta'), locale = cmbd_def$locale) %>% 
       subset(c_alta == 6)%>%
       dplyr::group_by(ocip) %>%
       dplyr::summarise(ddeath = max(d_alta)) # From all possibles the maximum is considered

@@ -35,7 +35,7 @@ sisap.read_file = function(file_def, vars = names(file_def$col_names), locale = 
 sisap.file_definition = function(filename, delim = '@', col_names = NULL, 
                                  integer_vars = NULL, double_vars = NULL,
                                  logical_vars = NULL, date_vars = NULL,
-                                 type = NULL, numcol = NULL){
+                                 type = NULL, numcol = NULL, locale = readr::locale(date_format = "%Y%m%d")){
   fr = readr::read_delim(filename, delim, n_max = 0, col_names = FALSE)
   if(!(is.null(type) & is.null(numcol))){
     if(is.null(numcol)){
@@ -86,7 +86,8 @@ sisap.file_definition = function(filename, delim = '@', col_names = NULL,
     'type' = NULL,
     'file' = filename,
     'delim' = delim,
-    'col_names' = cnames),
+    'col_names' = cnames,
+    'locale' = locale,
     class='sisap.file')
 }
 
