@@ -87,7 +87,7 @@ sisap.file_definition = function(filename, delim = '@', col_names = NULL,
     'file' = filename,
     'delim' = delim,
     'col_names' = cnames,
-    'locale' = locale,
+    'locale' = locale),
     class='sisap.file')
 }
 
