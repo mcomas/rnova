@@ -6,7 +6,8 @@
 \usage{
 sisap.file_definition(filename, delim = "@", col_names = NULL,
   integer_vars = NULL, double_vars = NULL, logical_vars = NULL,
-  date_vars = NULL, type = NULL, numcol = NULL)
+  date_vars = NULL, type = NULL, numcol = NULL,
+  locale = readr::locale(date_format = "\%Y\%m\%d"))
 }
 \arguments{
 \item{filename}{path to the file}

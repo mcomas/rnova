@@ -91,6 +91,53 @@ problems.first_event = function(df.disease, xml_disease_file, diseases, any = TR
   }
 }
 
+#' Get all events
+#' 
+#' @param df.disease data.frame containing the registry
+#' @param xml_disease_file xml file containing the disease definition
+#' @param diseases name of diseases of interest (must be contained in the xml file definition)
+#' @param any logical indicating whether to calculate the overall minimum (TRUE) or the separated by disease (FALSE)
+#' @param where_icd9 character indicating where to find the information inside column field
+#' @param where_icd10 character indicating where to find the information inside column field
+#' @param icd9.list vector with the ICD-9 codes should be considered
+#' @param icd10.list vector with the ICD-10 codes should be considered
+#' @return returns a data.frame with all events
+#' 
+#' @export
+problems.all_events = function(df.disease, xml_disease_file, diseases, any = TRUE, 
+                               where_icd9 = c('dp', paste0('ds',1:9)), where_icd10 = 'ecap',
+                               icd9.list = NULL, icd10.list = NULL){
+  f_xml = xmlParse(xml_disease_file)
+  
+  df.disease.ecap = df.disease %>% subset(source == 'ecap' & field %in% where_icd10)
+  df.disease.cmbd = df.disease %>% subset(source == 'cmbd' & field %in% where_icd9)
+  
+  
+  if(is.null(icd10.list)){
+    icd10.probs = df.disease.ecap %>% { unique(.[['icd']])}
+    probs.icd10 = get_icd(disease = diseases, f_xml = f_xml, icd_list = icd10.probs, icd = 10, any = any)
+  }else{
+    probs.icd10 = get_icd(disease = diseases, f_xml = f_xml, icd_list = icd10.list, icd = 10, any = any)
+  }
+  
+  if(is.null(icd9.list)){
+    icd9.probs = df.disease.cmbd %>% { unique(.[['icd']])}
+    probs.icd9 = get_icd(disease = diseases, f_xml = f_xml, icd_list = icd9.probs, icd = 9, any = any)
+  }else{
+    probs.icd9 = get_icd(disease = diseases, f_xml = f_xml, icd_list = icd9.list, icd = 9, any = any)
+  }
+  
+  if(any){
+    bind_rows(df.disease.ecap %>% subset(icd %in% probs.icd10),
+              df.disease.cmbd %>% subset(icd %in% probs.icd9))
+  }else{
+    lapply(diseases, function(disease){
+      bind_rows(df.disease.ecap %>% subset(icd %in% probs.icd10[[disease]]),
+                df.disease.cmbd %>% subset(icd %in% probs.icd9[[disease]]))
+    }) %>% bind_rows
+  }
+}
+
 #' Get the date of the first procedure
 #' 
 #' @param df.disease data.frame containing the registry

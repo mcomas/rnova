@@ -2,6 +2,7 @@
 
 export(population.build)
 export(population.filter_age)
+export(problems.all_events)
 export(problems.build)
 export(problems.first_event)
 export(problems.first_procedure)

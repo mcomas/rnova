@@ -5,7 +5,7 @@
 \title{Create a population dataset from the information contained in population file and cmbd file (optional)}
 \usage{
 population.build(minimum_intro, maximum_intro, population_definition,
-  cmbd_definition = NULL, day = NULL)
+  cmbd_definition = NULL, day = NULL, other = c())
 }
 \arguments{
 \item{population_definition}{definition of population file}
