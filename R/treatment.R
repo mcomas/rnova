@@ -46,6 +46,7 @@ treatment.periods = function(df.treatment, months_effect = 6, include_env = TRUE
   bind_cols(dbeg %>% select(ocip, date), dend %>% ungroup %>% select(date.effect))
 }
 
+#' @export
 treatment.beginnings = function(df.treatment, months_effect = 6, include_env = TRUE){
   if(include_env){
     df.treatment = df.treatment %>%
@@ -63,6 +64,7 @@ treatment.beginnings = function(df.treatment, months_effect = 6, include_env = T
     select(-date.effect.prev)
 }
 
+#' @export
 treatment.endings = function(df.treatment, months_effect = 6, include_env = TRUE){
   if(include_env){
     df.treatment = df.treatment %>%
