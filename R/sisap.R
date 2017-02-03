@@ -171,6 +171,13 @@ sisap.column_names = function(filename, delim, type, numcol){
         integer_vars = c('env'),
         double_vars = c('pvp')))
     }
+    if(numcol == 8){
+      return(sisap.file_definition(
+        filename = filename, delim = delim,
+        col_names = c('ocip', 'atc', 'date', 'pfc', 'env', 'upi', 'upa', 'col'),
+        integer_vars = c('env'),
+        double_vars = c('pvp')))
+    }
   }
   if(type == 'medea'){
     if(numcol == 2){

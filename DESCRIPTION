@@ -1,24 +1,23 @@
 Package: rnova
 Encoding: UTF-8
 Title: Working with sisap files
-Version: 0.1.7
-Authors@R: c(person("Jordi", "Blanch", role = c("aut")),
-             person("Marc", "Comas-Cufí", role = c("aut", "cre"),
+Version: 0.2.0
+Authors@R: c(person("Marc", "Comas-Cufí", role = c("aut", "cre"),
                     email = "mcomas@idiapjgol.info"))
 Description: Tools to work with sisap files
 Depends:
     R (>= 3.1.0),
     XML,
-    dplyr (>= 0.4.3.9001),
-    tidyr (>= 0.4.1),
-    readr (>= 0.2.2),
+    dplyr (>= 0.5),
+    tidyr (>= 0.6.0),
+    readr (>= 1.0.0),
     stringr
 License: GPL
 LazyData: true
 Imports:
     XML,
-    dplyr (>= 0.4.3.9001),
-    tidyr (>= 0.4.1),
-    readr (>= 0.2.2),
+    dplyr (>= 0.5),
+    tidyr (>= 0.6.0),
+    readr (>= 1.0.0),
     stringr
 RoxygenNote: 5.0.1
