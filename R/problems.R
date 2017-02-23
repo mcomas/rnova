@@ -133,7 +133,8 @@ problems.all_events = function(df.disease, xml_disease_file, diseases, any = TRU
   }else{
     lapply(diseases, function(disease){
       bind_rows(df.disease.ecap %>% subset(icd %in% probs.icd10[[disease]]),
-                df.disease.cmbd %>% subset(icd %in% probs.icd9[[disease]]))
+                df.disease.cmbd %>% subset(icd %in% probs.icd9[[disease]])) %>%
+        mutate(disease = disease)
     }) %>% bind_rows
   }
 }
