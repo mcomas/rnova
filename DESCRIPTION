@@ -7,7 +7,7 @@ Authors@R: c(person("Marc", "Comas-Cufí", role = c("aut", "cre"),
 Description: Tools to work with sisap files
 Depends:
     R (>= 3.1.0),
-    XML,
+    XML (>= 3.98-1.5),
     dplyr (>= 0.5),
     tidyr (>= 0.6.0),
     readr (>= 1.0.0),
@@ -15,7 +15,7 @@ Depends:
 License: GPL
 LazyData: true
 Imports:
-    XML,
+    XML (>= 3.98-1.5),
     dplyr (>= 0.5),
     tidyr (>= 0.6.0),
     readr (>= 1.0.0),
