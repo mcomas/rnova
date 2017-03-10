@@ -3,7 +3,7 @@ Encoding: UTF-8
 Title: Working with sisap files
 Version: 0.2.0
 Authors@R: c(person("Marc", "Comas-Cufí", role = c("aut", "cre"),
-                    email = "mcomas@idiapjgol.info"))
+                    email = "mcomas@idiapjgol.cat"))
 Description: Tools to work with sisap files
 Depends:
     R (>= 3.1.0),
