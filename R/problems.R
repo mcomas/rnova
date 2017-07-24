@@ -172,6 +172,7 @@ problems.first_procedure = function(df.disease, xml_disease_file, procedures, an
   }
 }
 
+#' @export
 get_unique_icd = function(disease, f_xml, icd_list, icd = 10){
   l_icd = c()
   meta_diseases_in = getNodeSet(f_xml, sprintf("/problems/disease[@name='%s']/meta[not(@action='exclude')]/text()", disease))
@@ -195,7 +196,7 @@ get_unique_icd = function(disease, f_xml, icd_list, icd = 10){
   unname(l_icd)
 }
 
-
+#' @export
 get_icd = function(disease, f_xml, icd_list, icd = 10, any = TRUE){
   res = lapply(disease, get_unique_icd, f_xml, icd_list, icd = icd)
   if(any){
@@ -206,6 +207,7 @@ get_icd = function(disease, f_xml, icd_list, icd = 10, any = TRUE){
   }
 }
 
+#' @export
 get_unique_icd_proc = function(procedure, f_xml, icd_list, icd=9){
   l_icd = c()
   meta_procedures_in = getNodeSet(f_xml, sprintf("/problems/procedure[@name='%s']/meta[not(@action='exclude')]/text()", procedure))
@@ -229,6 +231,7 @@ get_unique_icd_proc = function(procedure, f_xml, icd_list, icd=9){
   l_icd
 }
 
+#' @export
 get_icd_proc = function(procedure, f_xml, icd_list, icd = 10, any = TRUE){
   res = lapply(procedure, get_unique_icd_proc, f_xml, icd_list, icd = icd)
   if(any){

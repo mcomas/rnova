@@ -31,4 +31,3 @@ returns a data.frame with all events
 \description{
 Get all events
 }
-

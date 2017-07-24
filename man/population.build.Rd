@@ -22,4 +22,3 @@ population object
 \description{
 Create a population dataset from the information contained in population file and cmbd file (optional)
 }
-

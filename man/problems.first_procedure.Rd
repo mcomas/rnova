@@ -24,4 +24,3 @@ returns a data.frame with the date of the first procedure
 \description{
 Get the date of the first procedure
 }
-

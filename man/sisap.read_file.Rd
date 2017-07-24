@@ -20,4 +20,3 @@ returns a data.frame in \code{\link{tbl_df}} format
 \description{
 Read a delimited sisap file
 }
-

@@ -1,7 +1,7 @@
 Package: rnova
 Encoding: UTF-8
 Title: Working with sisap files
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(person("Marc", "Comas-Cufí", role = c("aut", "cre"),
                     email = "mcomas@idiapjgol.cat"))
 Description: Tools to work with sisap files
@@ -20,4 +20,4 @@ Imports:
     tidyr (>= 0.6.0),
     readr (>= 1.0.0),
     stringr (>= 1.0.0)
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

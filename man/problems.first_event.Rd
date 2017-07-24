@@ -31,4 +31,3 @@ returns a data.frame with the date of the first event
 \description{
 Get the date of the first event
 }
-

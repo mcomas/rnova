@@ -19,4 +19,3 @@ a data.frame containing the facturations
 \description{
 Create a treatment data.frame with a treatment from registry
 }
-

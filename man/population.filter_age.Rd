@@ -19,4 +19,3 @@ population object
 \description{
 Population filtered according to age filter
 }
-

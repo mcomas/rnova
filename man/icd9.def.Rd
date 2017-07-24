@@ -12,4 +12,3 @@ icd9.def
 ICD9 definitions according to the Institute Català de laSalut
 }
 \keyword{datasets}
-
