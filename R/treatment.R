@@ -27,7 +27,7 @@ treatment.build = function(treatment_definition, ocip_filter = NULL, day_of_mont
 treatment.periods = function(df.treatment, months_effect = 6, include_env = TRUE){
   if(include_env){
     df.treatment = df.treatment %>%
-      mutate(date.effect = date + 30 * 6 + env * ifelse(is.na(pf.units), 28, pf.units))
+      mutate(date.effect = date + 30 * months_effect + env * ifelse(is.na(pf.units), 28, pf.units))
   }else{
     df.treatment = df.treatment %>%
       mutate(date.effect = date + 30 *  months_effect)
@@ -50,7 +50,7 @@ treatment.periods = function(df.treatment, months_effect = 6, include_env = TRUE
 treatment.beginnings = function(df.treatment, months_effect = 6, include_env = TRUE){
   if(include_env){
     df.treatment = df.treatment %>%
-      mutate(date.effect = date + 30 * 6 + env * ifelse(is.na(pf.units), 28, pf.units))
+      mutate(date.effect = date + 30 * months_effect + env * ifelse(is.na(pf.units), 28, pf.units))
   }else{
     df.treatment = df.treatment %>%
       mutate(date.effect = date + 30 *  months_effect)
@@ -68,7 +68,7 @@ treatment.beginnings = function(df.treatment, months_effect = 6, include_env = T
 treatment.endings = function(df.treatment, months_effect = 6, include_env = TRUE){
   if(include_env){
     df.treatment = df.treatment %>%
-      mutate(date.effect = date + 30 * 6 + env * ifelse(is.na(pf.units), 28, pf.units))
+      mutate(date.effect = date + 30 * months_effect + env * ifelse(is.na(pf.units), 28, pf.units))
   }else{
     df.treatment = df.treatment %>%
       mutate(date.effect = date + 30 *  months_effect)
